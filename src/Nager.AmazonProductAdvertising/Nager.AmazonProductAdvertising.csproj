@@ -4,7 +4,7 @@
     <TargetFrameworks>net8.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>3.0.0</Version>
+    <Version>3.0.1</Version>
     <Authors>Tino Hager, Benjamin Cauchebrais</Authors>
     <Company>nager.at</Company>
     <PackageProjectUrl>https://github.com/benco8186/Nager.AmazonProductAdvertising</PackageProjectUrl>
@@ -13,7 +13,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Copyright>Copyright © nager.at</Copyright>
     <PackageId>AmazonProductAdvertising.SDK</PackageId>
-    <PackageReleaseNotes>Takeover of the Nager.AmazonProductAdvertising repository and update to .net 8</PackageReleaseNotes>
+    <PackageReleaseNotes>Initiliaze Resources properties in Requests with = Array.Empty</PackageReleaseNotes>
     <PackageTags>ProductAdvertisingAPI AmazonProductAdvertising paapi5 product search amazon</PackageTags>
     <Description>Amazon Product Advertising API, Supports ItemSeach with ASIN, EAN, UPC and ISBN, ItemLookup and BrowseNodeLookup</Description>
     <PackageIcon>logo.png</PackageIcon>

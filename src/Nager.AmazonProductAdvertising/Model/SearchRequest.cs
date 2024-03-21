@@ -11,7 +11,7 @@
         public int? ItemPage { get; set; }
         public SortBy? SortBy { get; set; }
         public string? BrowseNodeId { get; set; }
-        public string[]? Resources { get; set; }
+        public string[]? Resources { get; set; } = Array.Empty<string>();
         public Merchant? Merchant { get; set; }
         public SearchIndex? SearchIndex { get; set; }
         public Condition? Condition { get; set; }

@@ -5,14 +5,7 @@
     /// </summary>
     public class AmazonResourceValidator
     {
-        private readonly Dictionary<string, string[]> _resources;
-
-        /// <summary>
-        /// Amazon Resource Validator
-        /// </summary>
-        public AmazonResourceValidator()
-        {
-            this._resources = new Dictionary<string, string[]>
+        private readonly Dictionary<string, string[]> Resources = new Dictionary<string, string[]>
             {
                 { "BrowseNodes.Ancestor", new [] { "GetBrowseNodes" } },
                 { "BrowseNodes.Children", new [] { "GetBrowseNodes" } },
@@ -78,7 +71,6 @@
                 { "VariationSummary.Price.LowestPrice", new [] { "GetVariations" } },
                 { "VariationSummary.VariationDimension", new [] { "GetVariations" } },
             };
-        }
 
         /// <summary>
         /// Check resources are valid for operation
@@ -88,18 +80,18 @@
         /// <returns></returns>
         public bool IsResourcesValid(string[] resources, string operation)
         {
-            if (string.IsNullOrEmpty(operation))
+            if(string.IsNullOrEmpty(operation))
             {
                 throw new ArgumentNullException(nameof(operation));
             }
 
-            if (resources == null)
+            if(resources == null)
             {
                 return false;
             }
 
-            var items = this._resources.Count(resource => 
-                resources.Any(x => resource.Key.Equals(x, System.StringComparison.OrdinalIgnoreCase) && 
+            var items = Resources.Count(resource =>
+                resources.Any(x => resource.Key.Equals(x, System.StringComparison.OrdinalIgnoreCase) &&
                 resource.Value.Any(y => y.Equals(operation, System.StringComparison.OrdinalIgnoreCase)))
             );
 
