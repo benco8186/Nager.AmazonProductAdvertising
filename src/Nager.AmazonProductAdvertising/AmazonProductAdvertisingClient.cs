@@ -45,7 +45,8 @@ namespace Nager.AmazonProductAdvertising
             AccessKey = accessKey;
             SecretKey = secretKey;
             HttpClient = new RestClient(new LoggingHandler(new HttpClientHandler()));
-            HttpClient.AddDefaultHeader("User-Agent", userAgent ?? "Nager.AmazonProductAdvertising");
+            // Causes problems with RestSharp 111.3.0: parameter already set 
+            // HttpClient.AddDefaultHeader("User-Agent", userAgent ?? "Nager.AmazonProductAdvertising");
 
             AmazonEndpoint = amazonEndpoint;
             PartnerTag = partnerTag;
