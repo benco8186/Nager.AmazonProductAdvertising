@@ -78,59 +78,72 @@ namespace Nager.AmazonProductAdvertising
         /// </summary>
         /// <param name="keyword"></param>
         /// <returns></returns>
-        public async Task<SearchItemResponse> SearchItemsAsync(string keyword)
+        public Task<SearchItemResponse> SearchItemsAsync(string keyword)
+        {
+            var resources = new[]
+            {
+                "BrowseNodeInfo.BrowseNodes",
+                "BrowseNodeInfo.BrowseNodes.Ancestor",
+                "BrowseNodeInfo.BrowseNodes.SalesRank",
+
+                "Images.Primary.Small",
+                "Images.Primary.Medium",
+                "Images.Primary.Large",
+
+                "Images.Variants.Small",
+                "Images.Variants.Medium",
+                "Images.Variants.Large",
+
+                "ItemInfo.ByLineInfo",
+                "ItemInfo.Classifications",
+                "ItemInfo.ContentInfo",
+                "ItemInfo.ContentRating",
+                "ItemInfo.ExternalIds",
+                "ItemInfo.Features",
+                "ItemInfo.ProductInfo",
+                "ItemInfo.TechnicalInfo",
+                "ItemInfo.Title",
+                "ItemInfo.TradeInInfo",
+
+                "Offers.Listings.Availability.MinOrderQuantity",
+                "Offers.Listings.Availability.MaxOrderQuantity",
+                "Offers.Listings.Availability.Message",
+                "Offers.Listings.Availability.Type",
+                "Offers.Listings.Condition",
+                "Offers.Listings.Condition.SubCondition",
+                "Offers.Listings.DeliveryInfo.IsAmazonFulfilled",
+                "Offers.Listings.DeliveryInfo.IsFreeShippingEligible",
+                "Offers.Listings.DeliveryInfo.IsPrimeEligible",
+                "Offers.Listings.IsBuyBoxWinner",
+                "Offers.Listings.LoyaltyPoints.Points",
+                "Offers.Listings.MerchantInfo",
+                "Offers.Listings.Price",
+                "Offers.Listings.ProgramEligibility.IsPrimeExclusive",
+                "Offers.Listings.ProgramEligibility.IsPrimePantry",
+                "Offers.Listings.Promotions",
+                "Offers.Listings.SavingBasis",
+                "Offers.Summaries.HighestPrice",
+                "Offers.Summaries.LowestPrice",
+                "Offers.Summaries.OfferCount",
+
+                "ParentASIN",
+                "SearchRefinements",
+            };
+            
+            return SearchItemsAsync(resources, keyword);
+        }
+        
+        /// <summary>
+        /// Search items with a keyword
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <param name="resources"></param>
+        /// <returns></returns>
+        public async Task<SearchItemResponse> SearchItemsAsync(string[] resources, string keyword)
         {
             var request = new SearchRequest(keyword)
             {
-                Resources = new[]
-                {
-                    "BrowseNodeInfo.BrowseNodes",
-                    "BrowseNodeInfo.BrowseNodes.Ancestor",
-                    "BrowseNodeInfo.BrowseNodes.SalesRank",
-
-                    "Images.Primary.Small",
-                    "Images.Primary.Medium",
-                    "Images.Primary.Large",
-
-                    "Images.Variants.Small",
-                    "Images.Variants.Medium",
-                    "Images.Variants.Large",
-
-                    "ItemInfo.ByLineInfo",
-                    "ItemInfo.Classifications",
-                    "ItemInfo.ContentInfo",
-                    "ItemInfo.ContentRating",
-                    "ItemInfo.ExternalIds",
-                    "ItemInfo.Features",
-                    "ItemInfo.ProductInfo",
-                    "ItemInfo.TechnicalInfo",
-                    "ItemInfo.Title",
-                    "ItemInfo.TradeInInfo",
-
-                    "Offers.Listings.Availability.MinOrderQuantity",
-                    "Offers.Listings.Availability.MaxOrderQuantity",
-                    "Offers.Listings.Availability.Message",
-                    "Offers.Listings.Availability.Type",
-                    "Offers.Listings.Condition",
-                    "Offers.Listings.Condition.SubCondition",
-                    "Offers.Listings.DeliveryInfo.IsAmazonFulfilled",
-                    "Offers.Listings.DeliveryInfo.IsFreeShippingEligible",
-                    "Offers.Listings.DeliveryInfo.IsPrimeEligible",
-                    "Offers.Listings.IsBuyBoxWinner",
-                    "Offers.Listings.LoyaltyPoints.Points",
-                    "Offers.Listings.MerchantInfo",
-                    "Offers.Listings.Price",
-                    "Offers.Listings.ProgramEligibility.IsPrimeExclusive",
-                    "Offers.Listings.ProgramEligibility.IsPrimePantry",
-                    "Offers.Listings.Promotions",
-                    "Offers.Listings.SavingBasis",
-                    "Offers.Summaries.HighestPrice",
-                    "Offers.Summaries.LowestPrice",
-                    "Offers.Summaries.OfferCount",
-
-                    "ParentASIN",
-                    "SearchRefinements",
-                },
+                Resources = resources
             };
 
             return await SearchItemsAsync(request);
@@ -190,58 +203,71 @@ namespace Nager.AmazonProductAdvertising
         /// </summary>
         /// <param name="itemIds"></param>
         /// <returns></returns>
-        public async Task<GetItemsResponse> GetItemsAsync(params string[] itemIds)
+        public Task<GetItemsResponse> GetItemsAsync(params string[] itemIds)
+        {
+            var resources = new[]
+            {
+                "BrowseNodeInfo.BrowseNodes",
+                "BrowseNodeInfo.BrowseNodes.Ancestor",
+                "BrowseNodeInfo.BrowseNodes.SalesRank",
+
+                "Images.Primary.Small",
+                "Images.Primary.Medium",
+                "Images.Primary.Large",
+
+                "Images.Variants.Small",
+                "Images.Variants.Medium",
+                "Images.Variants.Large",
+
+                "ItemInfo.ByLineInfo",
+                "ItemInfo.Classifications",
+                "ItemInfo.ContentInfo",
+                "ItemInfo.ContentRating",
+                "ItemInfo.ExternalIds",
+                "ItemInfo.Features",
+                "ItemInfo.ManufactureInfo",
+                "ItemInfo.ProductInfo",
+                "ItemInfo.TechnicalInfo",
+                "ItemInfo.Title",
+                "ItemInfo.TradeInInfo",
+
+                "Offers.Listings.Availability.MinOrderQuantity",
+                "Offers.Listings.Availability.MaxOrderQuantity",
+                "Offers.Listings.Availability.Message",
+                "Offers.Listings.Availability.Type",
+                "Offers.Listings.Condition",
+                "Offers.Listings.Condition.SubCondition",
+                "Offers.Listings.DeliveryInfo.IsAmazonFulfilled",
+                "Offers.Listings.DeliveryInfo.IsFreeShippingEligible",
+                "Offers.Listings.DeliveryInfo.IsPrimeEligible",
+                "Offers.Listings.LoyaltyPoints.Points",
+                "Offers.Listings.MerchantInfo",
+                "Offers.Listings.Price",
+                "Offers.Listings.ProgramEligibility.IsPrimeExclusive",
+                "Offers.Listings.ProgramEligibility.IsPrimePantry",
+                "Offers.Listings.Promotions",
+                "Offers.Listings.SavingBasis",
+                "Offers.Summaries.HighestPrice",
+                "Offers.Summaries.LowestPrice",
+                "Offers.Summaries.OfferCount",
+
+                "ParentASIN",
+            };
+            
+            return GetItemsAsync(resources, itemIds);
+        }
+
+        /// <summary>
+        /// Get items via id
+        /// </summary>
+        /// <param name="itemIds"></param>
+        /// <param name="resources"></param>
+        /// <returns></returns>
+        public async Task<GetItemsResponse> GetItemsAsync(string[] resources, params string[] itemIds)
         {
             var request = new ItemsRequest(itemIds)
             {
-                Resources = new[]
-                {
-                    "BrowseNodeInfo.BrowseNodes",
-                    "BrowseNodeInfo.BrowseNodes.Ancestor",
-                    "BrowseNodeInfo.BrowseNodes.SalesRank",
-
-                    "Images.Primary.Small",
-                    "Images.Primary.Medium",
-                    "Images.Primary.Large",
-
-                    "Images.Variants.Small",
-                    "Images.Variants.Medium",
-                    "Images.Variants.Large",
-
-                    "ItemInfo.ByLineInfo",
-                    "ItemInfo.Classifications",
-                    "ItemInfo.ContentInfo",
-                    "ItemInfo.ContentRating",
-                    "ItemInfo.ExternalIds",
-                    "ItemInfo.Features",
-                    "ItemInfo.ManufactureInfo",
-                    "ItemInfo.ProductInfo",
-                    "ItemInfo.TechnicalInfo",
-                    "ItemInfo.Title",
-                    "ItemInfo.TradeInInfo",
-
-                    "Offers.Listings.Availability.MinOrderQuantity",
-                    "Offers.Listings.Availability.MaxOrderQuantity",
-                    "Offers.Listings.Availability.Message",
-                    "Offers.Listings.Availability.Type",
-                    "Offers.Listings.Condition",
-                    "Offers.Listings.Condition.SubCondition",
-                    "Offers.Listings.DeliveryInfo.IsAmazonFulfilled",
-                    "Offers.Listings.DeliveryInfo.IsFreeShippingEligible",
-                    "Offers.Listings.DeliveryInfo.IsPrimeEligible",
-                    "Offers.Listings.LoyaltyPoints.Points",
-                    "Offers.Listings.MerchantInfo",
-                    "Offers.Listings.Price",
-                    "Offers.Listings.ProgramEligibility.IsPrimeExclusive",
-                    "Offers.Listings.ProgramEligibility.IsPrimePantry",
-                    "Offers.Listings.Promotions",
-                    "Offers.Listings.SavingBasis",
-                    "Offers.Summaries.HighestPrice",
-                    "Offers.Summaries.LowestPrice",
-                    "Offers.Summaries.OfferCount",
-
-                    "ParentASIN",
-                }
+                Resources = resources
             };
 
             return await GetItemsAsync(request);
