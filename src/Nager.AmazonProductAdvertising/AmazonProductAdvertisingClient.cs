@@ -273,6 +273,9 @@ public class AmazonProductAdvertisingClient
     /// <returns></returns>
     public async Task<GetItemsResponse> GetItemsAsync(ItemsRequest itemsRequest)
     {
+        if (itemsRequest.Resources == null)
+            throw new ArgumentNullException(nameof(itemsRequest.Resources));
+
         if (!AmazonResourceValidator.IsResourcesValid(itemsRequest.Resources, "GetItems"))
         {
             return new GetItemsResponse { Successful = false, ErrorMessage = "Resources has wrong values" };
@@ -423,14 +426,20 @@ public class AmazonProductAdvertisingClient
 
     private T DeserializeObject<T>(HttpResponse response) where T : AmazonResponse
     {
+        if (response.Content == null)
+            throw new ArgumentNullException(nameof(response.Content));
+
         var amazonResponse = JsonConvert.DeserializeObject<T>(response.Content, JsonSerializerSettingsResponse);
+        if (amazonResponse == null)
+            throw new ArgumentNullException(nameof(amazonResponse));
+
         amazonResponse.Successful = response.Successful;
-        if (amazonResponse.Errors != null)
-        {
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (amazonResponse.Errors == null || amazonResponse.Errors.Length == 0)
+            return amazonResponse;
+
             amazonResponse.Successful = false;
             amazonResponse.ErrorMessage = string.Join(Environment.NewLine, amazonResponse.Errors.Select(o => o.Message));
-        }
-
         return amazonResponse;
     }
 
