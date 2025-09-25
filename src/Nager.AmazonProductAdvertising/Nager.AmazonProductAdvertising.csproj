@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0</TargetFrameworks>
+    <TargetFrameworks>net9.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>3.0.1</Version>
+    <Version>3.1.0</Version>
     <Authors>Tino Hager, Benjamin Cauchebrais</Authors>
     <Company>nager.at</Company>
     <PackageProjectUrl>https://github.com/benco8186/Nager.AmazonProductAdvertising</PackageProjectUrl>
@@ -23,14 +23,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="newtonsoft.json" Version="13.0.3" />
-    <PackageReference Include="RestSharp" Version="111.4.0" />
+    <PackageReference Include="newtonsoft.json" Version="13.0.4" />
+    <PackageReference Include="RestSharp" Version="112.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\LICENSE.md" Pack="true" PackagePath="LICENSE.md" />
-    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
-    <None Include="..\..\doc\logo.png" Pack="true" PackagePath="\"/>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\doc\logo.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
